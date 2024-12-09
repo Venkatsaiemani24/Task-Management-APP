@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron mt-5 text-center shadow-lg" style="background: linear-gradient(to right, #007bff, #6c63ff); color: white; border-radius: 15px;">
+    <h1 class="display-4 font-weight-bold">Welcome to Task Manager App!</h1>
+    <p class="lead mt-4">Effortlessly organize your tasks and boost productivity with our user-friendly platform.</p>
+    <hr class="my-4 bg-light">
+    <p class="mt-3">Get Started !</p>
+    <div>
+        <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-lg mr-3">Login</a>
+        <a href="{{ url_for('register') }}" class="btn btn-warning btn-lg text-dark">Register</a>
+    </div>
+</div>
+{% endblock %}

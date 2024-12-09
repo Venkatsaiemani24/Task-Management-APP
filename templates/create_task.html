@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script>
+    function validateForm() {
+        const title = document.forms["taskForm"]["title"].value;
+        const description = document.forms["taskForm"]["description"].value;
+        const pattern = /^[a-zA-Z\s]+$/;
+
+        if (!pattern.test(title)) {
+            alert("Task name should only contain letters and spaces.");
+            return false;
+        }
+
+        if (!pattern.test(description)) {
+            alert("Task description should only contain letters and spaces.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+<div class="container mt-5">
+    <h2>Create a New Task</h2>
+    <form name="taskForm" action="{{ url_for('create_task') }}" method="POST" class="mt-4" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" name="title" class="form-control" placeholder="Enter task title" required>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea name="description" class="form-control" rows="4" placeholder="Enter task description" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="priority">Priority Level:</label>
+            <select name="priority" class="form-control" required>
+                <option value="">Select priority</option>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="due_date">Due Date:</label>
+            <input type="date" name="due_date" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="due_time">Due Time:</label>
+            <input type="time" name="due_time" class="form-control" required>
+        </div>
+    
+        <button type="submit" class="btn btn-primary">Create Task</button>
+    </form>
+</div>
+{% endblock %}
